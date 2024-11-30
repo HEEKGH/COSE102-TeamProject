@@ -20,5 +20,6 @@ def create_graph(df, subject):
     plt.ylabel('학생 수', fontsize=14)
     plt.legend()
     plt.tight_layout()
+    plt.show()
 
     return plt.gcf()
