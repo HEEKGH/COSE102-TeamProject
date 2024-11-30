@@ -23,7 +23,7 @@ def choose_subject(main_subjects, sub_subjects):
         print('유형을 선택해주세요.')
         for i in sub_subjects[main_choice]:
             print(i)
-        sub_choice = input('유형을 입력하세요 :')
+        sub_choice = input('유형을 입력하세요 : ')
         subject = sub_choice
 
     return subject, main_choice, sub_choice
