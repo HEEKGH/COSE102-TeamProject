@@ -32,3 +32,5 @@ if __name__ == "__main__":
     main_choice, sub_choice = choose_subject(main_subjects, sub_subjects)
     combined_data = module_a.process_subject_data(data, main_choice, sub_choice)
     module_b.create_graph(combined_data, sub_choice)
+
+    
