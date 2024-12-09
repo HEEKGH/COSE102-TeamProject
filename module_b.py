@@ -1,7 +1,7 @@
 
 import matplotlib.pyplot as plt
 
-def create_graph(df, subject):
+def create_graph(df, subject, year):
     plt.rc('font', family='Malgun Gothic')
     plt.figure(figsize = (20,6))
 
@@ -15,7 +15,7 @@ def create_graph(df, subject):
         histtype='bar',
     )
 
-    plt.title(f'2024학년도 수능 {subject}과목 분포', fontsize=16)
+    plt.title(f'{year}학년도 수능 {subject}과목 분포', fontsize=16)
     plt.xlabel('표준점수', fontsize=14)
     plt.ylabel('학생 수', fontsize=14)
     plt.xticks(range(min(df['표준점수']), max(df['표준점수']) + 1, 5)) #x축 눈금을 5단위로 표시
