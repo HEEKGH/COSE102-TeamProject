@@ -7,6 +7,14 @@ import module_b
 data = module_a.read_sunung('20231231.csv')
 main_subjects, sub_subjects = module_a.get_subjects(data)
 
+# 년도 선택 함수
+def choose_year():
+
+    print('(선택 가능한 년도 : 2020/2021/2022/2023)')
+    year = input('년도를 선택하세요(숫자만 입력) : ')
+    
+    return year
+
 # 과목명 선택 함수
 def choose_subject(main_subjects, sub_subjects):
 
@@ -31,6 +39,7 @@ def choose_subject(main_subjects, sub_subjects):
 if __name__ == "__main__":
     print('<대학수학능력시험 표준점수 분포 그래프 생성 프로그램>')
 
+    year = choose_year()
     subject, main_choice, sub_choice = choose_subject(main_subjects, sub_subjects)
     combined_data = module_a.process_subject_data(data, main_choice, sub_choice)
-    module_b.create_graph(combined_data, subject)
+    module_b.create_graph(combined_data, subject, year)
