@@ -14,6 +14,8 @@ def choose_file_year():
             "2023": "20231231.csv",}
     if year in years:
         file_path = years[year]
+    else:
+        print("잘못된 연도를 입력하셨습니다.")
     
     return year, file_path
 
@@ -44,7 +46,7 @@ if __name__ == "__main__":
     year, file_path = choose_file_year()
 
     data = module_a.read_sunung(file_path)
-    main_subjects, sub_subjects = module_a.get_subjects(data)
+    main_subjects, sub_subjects = module_a.get_subjects_with_languages(data)
 
     subject, main_choice, sub_choice = choose_subject(main_subjects, sub_subjects)
     combined_data = module_a.process_subject_data(data, main_choice, sub_choice)
