@@ -38,26 +38,35 @@ def process_subject_data(data, subject, subsubject=None):
 
 # 실행 코드
 if __name__ == "__main__":
-    data = read_sunung("20231231.csv")
+    year = input("연도 선택(2020, 2021, 2022, 2023) : ")
+    years ={"2020": "20201231.csv",
+            "2021": "20211231.csv",
+            "2022": "20221231.csv",
+            "2023": "20231231.csv",}
+    if year in years:
+        file_path = years[year]
+        data = read_sunung(file_path)
 
-    if data is not None:
-        main_subjects, sub_subjects = get_subjects(data)
-        print("사용 가능한 과목:", main_subjects)
+        if data is not None:
+            main_subjects, sub_subjects = get_subjects(data)
+            print("사용 가능한 과목:", main_subjects)
 
-        subject = input("분석할 과목을 선택하세요: ")
+            subject = input("분석할 과목을 선택하세요: ")
 
-        if subject in main_subjects:
-            if subject in sub_subjects:
-                print(f"사용 가능한 세부 과목 ({subject}):", sub_subjects[subject])
-                subsubject = input("분석할 세부 과목을 선택하세요: ")
+            if subject in main_subjects:
+                if subject in sub_subjects:
+                    print(f"사용 가능한 세부 과목 ({subject}):", sub_subjects[subject])
+                    subsubject = input("분석할 세부 과목을 선택하세요: ")
 
-                if subsubject in sub_subjects[subject]:
-                    combined_data = process_subject_data(data, subject, subsubject)
-                    print(f"\n[{subject} - {subsubject}] 데이터:\n", combined_data)
+                    if subsubject in sub_subjects[subject]:
+                        combined_data = process_subject_data(data, subject, subsubject)
+                        print(f"\n[{subject} - {subsubject}] 데이터:\n", combined_data)
+                    else:
+                        print("잘못된 세부과목을 입력하셨습니다. 프로그램을 종료합니다.")
                 else:
-                    print("잘못된 세부과목을 입력하셨습니다. 프로그램을 종료합니다.")
+                    combined_data = process_subject_data(data, subject)
+                    print(f"\n[{subject}] 데이터:\n", combined_data)
             else:
-                combined_data = process_subject_data(data, subject)
-                print(f"\n[{subject}] 데이터:\n", combined_data)
-        else:
-            print("잘못된 과목명을 입력하셨습니다. 프로그램을 종료합니다.")
+                print("잘못된 과목명을 입력하셨습니다. 프로그램을 종료합니다.")
+    else:
+        print("잘못된 연도를 입력하셨습니다. 프로그램을 종료합니다.")
