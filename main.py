@@ -31,7 +31,7 @@ def choose_subject(main_subjects, sub_subjects):
 
     # 유형 확인
     sub_choice = None # sub_choice : 유형. (module_a의 combined_data 함수에서 사용)
-    if main_choice in ['사회탐구', '과학탐구', '직업탐구']:
+    if main_choice in ['사회탐구', '과학탐구', '직업탐구', '제2외국어 한문']:
         print('유형을 선택해주세요.')
         for i in sub_subjects[main_choice]:
             print(i)
